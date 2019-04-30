@@ -77,12 +77,130 @@ function justNumber(a) {
     if(timesDiv==0)
         return ' true ';
 }
+//Найти корень натурального числа с точностью до целого
+function sqRound(a) {
+
+    return Math.round(Math.sqrt(a));
+}
+//Вычислить факториал числа n.
+function factorial(a) {
+    var fac = 1;
+    for (i=1; i<=a; i++){
+        fac=fac*i;
+    }
+    return fac;
+}
+//Посчитать сумму цифр заданного числа
+function sumOfSign(a) {
+var sum =0;
+        output = [];
+        aString = a.toString();
+
+    for (var i = 0; i < aString.length;  i ++) {
+        output.push(aString.charAt(i));
+    }
+
+    for(i=0; i<output.length; i++){
+
+        sum = sum + Number(output[i]);
+    }
+    return sum;
+}
+//Вывести число, которое является зеркальным отображением последовательности
+// цифр заданного числа
+function mirror(a) {
+    output = [];
+    aString = a.toString();
+var res = "";
+    for (var i = 0; i < aString.length;  i ++) {
+        output.push(aString.charAt(i));
+    }
+    for(i=output.length-1; i>=0; i--){
+
+        res = res + output[i];
+    }
+    var resNumber = Number(res);
+    return resNumber;
+}
+
+// Найти минимальный элемент массива
+function minFromArray(array) {
+var min = array[0];
+for (i=1; i<array.length; i++){
+    if(array[i]<min)
+        min = array[i];
+}
+return min;
+}
+ // Найти максимальный элемент массива
+function maxFromArray(array) {
+    var max = array[0];
+    for (var i=1; i<array.length; i++){
+        if(array[i]>max)
+            max = array[i];
+    }
+    return max;
+}
+// 3. Найти индекс минимального элемента массива
+function indexOfMinFromArray(array) {
+    var min = array[0];
+    var indexMin = 0;
+    for (i=0; i<array.length; i++){
+        if(array[i]<min){
+            min = array[i];
+        indexMin = i;}
+    }
+    return indexMin;
+}
+// 4. Найти индекс максимального элемента массива
+function indexOfMaxFromArray(array) {
+    var max = array[0];
+    var indexMax = 0;
+    for (i=1; i<array.length; i++){
+        if(array[i]>max){
+            max = array[i];
+        indexMax = i;}
+    }
+    return indexMax;
+}
+// 5. Посчитать сумму элементов массива с нечетными индексами
+function sumOfUneven(array2) {
+    var uneven = 0;
+    for(i=1; i<array2.length; i=i+2){
+        uneven= uneven+array2[i];
+    }
+    return uneven;
+}
+// 6. Сделать реверс массива (массив в обратном направлении)
+function reversArray(array) {
+    rev = [];
+    for(i=0; i<array.length; i++){
+        rev[array.length-i]=array[i];
+    }
+    return rev[rev.length-1];
+}
+// 7. Посчитать количество нечетных элементов массива
+
+// 8. Поменять местами первую и вторую половину массива, например, для массива 1 2 3
+// 4, результат 3 4 1 2
+// 9. Отсортировать массив (пузырьком (Bubble), выбором (Select), вставками (Insert))
+// 10. Отсортировать массив (Quick, Merge, Shell, Heap)
+
+
+
+
 function init() {
+    var array = [100, 5, 6, -7, 12, 15, 0, 3, -8, 9];
+    var array2 = [1,1,1,1,1]
     var res1 = ab(3, 10);
     var res2 = whereIsPoint(-1, 1);
     var res3 = sumOnlyPositive(3,-2,-2);
     console.log(res1, ', The point is lacated in the quart N - ', res2, ',  sum of numbers = ', res3, ', sumFromMaxPlus3 = '
-    , sumFromMaxPlus3(1,1,1), ',  Estimation is -', scoringOfStudent(99), sumAndAmount(), justNumber(11112));
+    , sumFromMaxPlus3(1,1,1), ',  Estimation is -', scoringOfStudent(99), sumAndAmount(), justNumber(11112),
+        ', sqRound = ', sqRound(10), ', factorial = ', factorial(6), ', Sum of numbers = ', sumOfSign(12342),
+        ', mirror = ', mirror(12345),', min from array = ', minFromArray(array), ', max from array = ', maxFromArray(array),
+        ', index of min from array = ',indexOfMinFromArray(array), ', index of max from array = ', indexOfMaxFromArray(array),
+        ' sumOfUneven numbers ', sumOfUneven(array2), ', last number of revers array = ', reversArray(array) );
 
 };
 init();

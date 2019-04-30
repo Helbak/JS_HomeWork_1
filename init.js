@@ -180,10 +180,32 @@ function reversArray(array) {
     return rev[rev.length-1];
 }
 // 7. Посчитать количество нечетных элементов массива
-
+function uneven(array) {
+    var amount =0;
+    for(i=0; i<array.length; i++){
+        if(array[i] %2!=0)
+            amount ++;
+    }
+    return amount;
+}
 // 8. Поменять местами первую и вторую половину массива, например, для массива 1 2 3
 // 4, результат 3 4 1 2
+function changeHalfs(array) {
+    changedAr = [];
+for(i=array.length/2; i<array.length; i++){
+changedAr.push(array[i]);
+}
+for(i=0; i<=array.length/2-1; i++){
+    changedAr.push(array[i]);
+}
+var res = '';
+for(i=0; i<changedAr.length; i++){
+  res = res+', ' +changedAr[i];
+}
+return res;
+}
 // 9. Отсортировать массив (пузырьком (Bubble), выбором (Select), вставками (Insert))
+
 // 10. Отсортировать массив (Quick, Merge, Shell, Heap)
 
 
@@ -191,7 +213,9 @@ function reversArray(array) {
 
 function init() {
     var array = [100, 5, 6, -7, 12, 15, 0, 3, -8, 9];
-    var array2 = [1,1,1,1,1]
+    //15, 0, 3, -8, 9, 100, 5, 6, -7, 12
+    var array2 = [1,1,1,1,1];
+
     var res1 = ab(3, 10);
     var res2 = whereIsPoint(-1, 1);
     var res3 = sumOnlyPositive(3,-2,-2);
@@ -200,7 +224,8 @@ function init() {
         ', sqRound = ', sqRound(10), ', factorial = ', factorial(6), ', Sum of numbers = ', sumOfSign(12342),
         ', mirror = ', mirror(12345),', min from array = ', minFromArray(array), ', max from array = ', maxFromArray(array),
         ', index of min from array = ',indexOfMinFromArray(array), ', index of max from array = ', indexOfMaxFromArray(array),
-        ' sumOfUneven numbers ', sumOfUneven(array2), ', last number of revers array = ', reversArray(array) );
+        ' sumOfUneven numbers ', sumOfUneven(array2), ', last number of revers array = ', reversArray(array),
+        ', amount of uneven =', uneven(array), ', change Halfs of array- ', changeHalfs(array));
 
 };
 init();

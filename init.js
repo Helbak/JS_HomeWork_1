@@ -32,90 +32,98 @@ function sumOnlyPositive(a, b, c) {
         c = 0;
     return a + b + c;
 }
+
 // Посчитать выражение макс(а*б*с, а+б+с)+3
-function sumFromMaxPlus3(a,b,c) {
-    return Math.max(a*b*c, a+b+c)+3
+function sumFromMaxPlus3(a, b, c) {
+    return Math.max(a * b * c, a + b + c) + 3
 }
+
 //Написать программу определения оценки студента по его рейтингу, на основе
 // следующих правил
 function scoringOfStudent(a) {
-if (a<=100 && a>=90)
-    return ' A ';
-    if(a>=75 && a<=89)
+    if (a <= 100 && a >= 90)
+        return ' A ';
+    if (a >= 75 && a <= 89)
         return ' B ';
-    if (a>=60 && a<=74)
+    if (a >= 60 && a <= 74)
         return ' C ';
-    if(a>=40 && a<=59)
+    if (a >= 40 && a <= 59)
         return ' D ';
-    if(a>=20 && a<=39)
-        return  ' E ';
-    if(a>=0 && a<=19)
+    if (a >= 20 && a <= 39)
+        return ' E ';
+    if (a >= 0 && a <= 19)
         return ' F ';
-    if(a<0 || a>100)
+    if (a < 0 || a > 100)
         return ' false ';
 }
+
 // Найти сумму четных чисел и их количество в диапазоне от 1 до 99
 function sumAndAmount() {
-    var sum =0;
+    var sum = 0;
     var amount = 0;
-    for(var i=2; i<=99; i=i+2){
-     sum=sum+i;
-     amount++;
-     var res = 'sum =  '+sum+' amount = '+amount;
+    for (var i = 2; i <= 99; i = i + 2) {
+        sum = sum + i;
+        amount++;
+        var res = 'sum =  ' + sum + ' amount = ' + amount;
     }
     return res;
 }
+
 // Проверить простое ли число?
 function justNumber(a) {
-    var timesDiv =0;
-    for(i=2; i<a; i++){
-     if (a%i == 0)
-         timesDiv++;
+    var timesDiv = 0;
+    for (i = 2; i < a; i++) {
+        if (a % i == 0)
+            timesDiv++;
     }
-    if(timesDiv>1)
+    if (timesDiv > 1)
         return ' false ';
-    if(timesDiv==0)
+    if (timesDiv == 0)
         return ' true ';
 }
+
 //Найти корень натурального числа с точностью до целого
 function sqRound(a) {
 
     return Math.round(Math.sqrt(a));
 }
+
 //Вычислить факториал числа n.
 function factorial(a) {
     var fac = 1;
-    for (i=1; i<=a; i++){
-        fac=fac*i;
+    for (i = 1; i <= a; i++) {
+        fac = fac * i;
     }
     return fac;
 }
+
 //Посчитать сумму цифр заданного числа
 function sumOfSign(a) {
-var sum =0;
-        output = [];
-        aString = a.toString();
+    var sum = 0;
+    output = [];
+    aString = a.toString();
 
-    for (var i = 0; i < aString.length;  i ++) {
+    for (var i = 0; i < aString.length; i++) {
         output.push(aString.charAt(i));
     }
 
-    for(i=0; i<output.length; i++){
+    for (i = 0; i < output.length; i++) {
 
         sum = sum + Number(output[i]);
     }
     return sum;
 }
+
 //Вывести число, которое является зеркальным отображением последовательности
 // цифр заданного числа
 function mirror(a) {
     output = [];
     aString = a.toString();
-var res = "";
-    for (var i = 0; i < aString.length;  i ++) {
+    var res = "";
+    for (var i = 0; i < aString.length; i++) {
         output.push(aString.charAt(i));
     }
-    for(i=output.length-1; i>=0; i--){
+    for (i = output.length - 1; i >= 0; i--) {
 
         res = res + output[i];
     }
@@ -125,107 +133,157 @@ var res = "";
 
 // Найти минимальный элемент массива
 function minFromArray(array) {
-var min = array[0];
-for (i=1; i<array.length; i++){
-    if(array[i]<min)
-        min = array[i];
+    var min = array[0];
+    for (i = 1; i < array.length; i++) {
+        if (array[i] < min)
+            min = array[i];
+    }
+    return min;
 }
-return min;
-}
- // Найти максимальный элемент массива
+
+// Найти максимальный элемент массива
 function maxFromArray(array) {
     var max = array[0];
-    for (var i=1; i<array.length; i++){
-        if(array[i]>max)
+    for (var i = 1; i < array.length; i++) {
+        if (array[i] > max)
             max = array[i];
     }
     return max;
 }
+
 // 3. Найти индекс минимального элемента массива
 function indexOfMinFromArray(array) {
     var min = array[0];
     var indexMin = 0;
-    for (i=0; i<array.length; i++){
-        if(array[i]<min){
+    for (i = 0; i < array.length; i++) {
+        if (array[i] < min) {
             min = array[i];
-        indexMin = i;}
+            indexMin = i;
+        }
     }
     return indexMin;
 }
+
 // 4. Найти индекс максимального элемента массива
 function indexOfMaxFromArray(array) {
     var max = array[0];
     var indexMax = 0;
-    for (i=1; i<array.length; i++){
-        if(array[i]>max){
+    for (i = 1; i < array.length; i++) {
+        if (array[i] > max) {
             max = array[i];
-        indexMax = i;}
+            indexMax = i;
+        }
     }
     return indexMax;
 }
+
 // 5. Посчитать сумму элементов массива с нечетными индексами
 function sumOfUneven(array2) {
     var uneven = 0;
-    for(i=1; i<array2.length; i=i+2){
-        uneven= uneven+array2[i];
+    for (i = 1; i < array2.length; i = i + 2) {
+        uneven = uneven + array2[i];
     }
     return uneven;
 }
+
 // 6. Сделать реверс массива (массив в обратном направлении)
 function reversArray(array) {
     rev = [];
-    for(i=0; i<array.length; i++){
-        rev[array.length-i]=array[i];
+    for (i = 0; i < array.length; i++) {
+        rev[array.length - i] = array[i];
     }
-    return rev[rev.length-1];
+    return rev[rev.length - 1];
 }
+
 // 7. Посчитать количество нечетных элементов массива
 function uneven(array) {
-    var amount =0;
-    for(i=0; i<array.length; i++){
-        if(array[i] %2!=0)
-            amount ++;
+    var amount = 0;
+    for (i = 0; i < array.length; i++) {
+        if (array[i] % 2 != 0)
+            amount++;
     }
     return amount;
 }
+
 // 8. Поменять местами первую и вторую половину массива, например, для массива 1 2 3
 // 4, результат 3 4 1 2
 function changeHalfs(array) {
     changedAr = [];
-for(i=array.length/2; i<array.length; i++){
-changedAr.push(array[i]);
+    for (i = array.length / 2; i < array.length; i++) {
+        changedAr.push(array[i]);
+    }
+    for (i = 0; i <= array.length / 2 - 1; i++) {
+        changedAr.push(array[i]);
+    }
+    // var res = '';
+    // for (i = 0; i < changedAr.length; i++) {
+    //     res = res + ', ' + changedAr[i];
+    // }
+    return changedAr.toString();
 }
-for(i=0; i<=array.length/2-1; i++){
-    changedAr.push(array[i]);
+
+// 9. Отсортировать массив (пузырьком (Bubble),  вставками (Insert))
+function sortBubble(array) {
+    for (i = 0; i < array.length - 1; i++){
+        for (j = 0; j < array.length; j++) {
+            if (array[j] > array[j + 1]) {
+                var temp = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = temp;
+            }
+        }
+    }
+    return array.toString()
 }
-var res = '';
-for(i=0; i<changedAr.length; i++){
-  res = res+', ' +changedAr[i];
+// 9. Отсортировать массив  выбором (Select)
+
+function sortSelection(array) {
+   for(i=0; i<array.length-1; i++){
+       var min = i;
+       for (var j = i+1; j < array.length; j++) {
+           if (array[j] < array[min])
+               min = j;
+       }
+       var temp = array[min];
+       array[min] = array[ i ];
+       array[ i ] = temp;
+   }
+   return array.toString();
 }
-return res;
+// 9. Отсортировать массив вставками (Insert))
+
+function sortInsert(array) {
+    for(i=1; i>array.length; i++){
+        var temp = array[i];
+        var j = i;
+        while (j>0 && array[j-1]>temp){
+            array[j] = array[j-1];
+            j--;
+        }
+        array[j]=temp;
+    }
+    return array.toString();
 }
-// 9. Отсортировать массив (пузырьком (Bubble), выбором (Select), вставками (Insert))
 
 // 10. Отсортировать массив (Quick, Merge, Shell, Heap)
 
 
-
-
 function init() {
     var array = [100, 5, 6, -7, 12, 15, 0, 3, -8, 9];
-    //15, 0, 3, -8, 9, 100, 5, 6, -7, 12
-    var array2 = [1,1,1,1,1];
+    //5, 6, -7, 12, 15, 0, 3, -8, 100, 9
+    var array2 = [1, 1, 1, 1, 1];
 
     var res1 = ab(3, 10);
     var res2 = whereIsPoint(-1, 1);
-    var res3 = sumOnlyPositive(3,-2,-2);
+    var res3 = sumOnlyPositive(3, -2, -2);
     console.log(res1, ', The point is lacated in the quart N - ', res2, ',  sum of numbers = ', res3, ', sumFromMaxPlus3 = '
-    , sumFromMaxPlus3(1,1,1), ',  Estimation is -', scoringOfStudent(99), sumAndAmount(), justNumber(11112),
+        , sumFromMaxPlus3(1, 1, 1), ',  Estimation is -', scoringOfStudent(99), sumAndAmount(), justNumber(11112),
         ', sqRound = ', sqRound(10), ', factorial = ', factorial(6), ', Sum of numbers = ', sumOfSign(12342),
-        ', mirror = ', mirror(12345),', min from array = ', minFromArray(array), ', max from array = ', maxFromArray(array),
-        ', index of min from array = ',indexOfMinFromArray(array), ', index of max from array = ', indexOfMaxFromArray(array),
+        ', mirror = ', mirror(12345), ', min from array = ', minFromArray(array), ', max from array = ', maxFromArray(array),
+        ', index of min from array = ', indexOfMinFromArray(array), ', index of max from array = ', indexOfMaxFromArray(array),
         ' sumOfUneven numbers ', sumOfUneven(array2), ', last number of revers array = ', reversArray(array),
-        ', amount of uneven =', uneven(array), ', change Halfs of array- ', changeHalfs(array));
+        ', amount of uneven =', uneven(array), ', change Halfs of array- ', changeHalfs(array), ', sort Bubble array- ',
+        sortBubble(array), ', sort selection - ', sortSelection(array), 'sort insert - ', sortInsert(array));
 
 };
 init();

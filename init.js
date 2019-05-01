@@ -224,7 +224,7 @@ function changeHalfs(array) {
 
 // 9. Отсортировать массив (пузырьком (Bubble),  вставками (Insert))
 function sortBubble(array) {
-    for (i = 0; i < array.length - 1; i++){
+    for (i = 0; i < array.length - 1; i++) {
         for (j = 0; j < array.length; j++) {
             if (array[j] > array[j + 1]) {
                 var temp = array[j];
@@ -235,32 +235,34 @@ function sortBubble(array) {
     }
     return array.toString()
 }
+
 // 9. Отсортировать массив  выбором (Select)
 
 function sortSelection(array) {
-   for(i=0; i<array.length-1; i++){
-       var min = i;
-       for (var j = i+1; j < array.length; j++) {
-           if (array[j] < array[min])
-               min = j;
-       }
-       var temp = array[min];
-       array[min] = array[ i ];
-       array[ i ] = temp;
-   }
-   return array.toString();
+    for (i = 0; i < array.length - 1; i++) {
+        var min = i;
+        for (var j = i + 1; j < array.length; j++) {
+            if (array[j] < array[min])
+                min = j;
+        }
+        var temp = array[min];
+        array[min] = array[i];
+        array[i] = temp;
+    }
+    return array.toString();
 }
+
 // 9. Отсортировать массив вставками (Insert))
 
 function sortInsert(array) {
-    for(i=1; i>array.length; i++){
+    for (i = 1; i > array.length; i++) {
         var temp = array[i];
         var j = i;
-        while (j>0 && array[j-1]>temp){
-            array[j] = array[j-1];
+        while (j > 0 && array[j - 1] > temp) {
+            array[j] = array[j - 1];
             j--;
         }
-        array[j]=temp;
+        array[j] = temp;
     }
     return array.toString();
 }
@@ -269,14 +271,15 @@ function sortInsert(array) {
 
 // Получить строковое название дня недели по номеру дня.
 function dayOfWeek(dayIndex) {
-    return ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"][dayIndex];
+    return ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"][dayIndex];
 }
+
 // 2. Вводим число (0-999), получаем строку с прописью числа.
-function wordNumber(a) {
+function numberToWord(a) {
 
     var word = String(a);
     var wordArr = word.split('');
-    var oneArr = ['one', 'twoo', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+    var oneArr = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
     var twoArr = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
     var threeArr = ['twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
     var fourArr = ['one hundred', 'two hundred', 'three hundred', 'four hundred', 'five hundred', 'six hundred', 'seven hundred', 'eight hundred', 'nine hundred'];
@@ -293,7 +296,7 @@ function wordNumber(a) {
     if (wordArr.length == 2 && wordArr[0] != 1 && wordArr[1] == 0) {
         return threeArr[wordArr[0] - 2];
     }
-    if (wordArr.length == 3 && wordArr[1] != 1&& wordArr[1] != 0  && wordArr[2] != 0) {//123
+    if (wordArr.length == 3 && wordArr[1] != 1 && wordArr[1] != 0 && wordArr[2] != 0) {//123
         var res = fourArr[wordArr[0] - 1] + ' ' + threeArr[wordArr[1] - 2] + ' ' + oneArr[wordArr[2] - 1];
         return res;
     }
@@ -305,14 +308,115 @@ function wordNumber(a) {
         return fourArr[wordArr[0] - 1];
     }
     if (wordArr.length == 3 && wordArr[1] == 0 && wordArr[2] != 0) {//103
-        var res = fourArr[wordArr[0] - 1] +' '+ oneArr[wordArr[2] - 1];
+        var res = fourArr[wordArr[0] - 1] + ' ' + oneArr[wordArr[2] - 1];
         return res;
     }
 }
+
 // 3. Вводим строку, которая содержит число, написанное прописью (0-999). Получить само
 // число
-// 4. Найти расстояние между двумя точками в двумерном декартовом пространстве.
+function wordToNumber(word) {
+    var wordArr = word.split(' ');
+    var oneArr = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+    var twoArr = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+    var threeArr = ['twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+    var fourArr = ['one hundred', 'two hundred', 'three hundred', 'four hundred', 'five hundred', 'six hundred', 'seven hundred', 'eight hundred', 'nine hundred'];
+    if (wordArr.length == 1) {
+        for (i = 0; i < oneArr.length; i++) {//One word
+            if (oneArr[i] == wordArr[0])
+                return i + 1;
+        }
+        for (i = 0; i < twoArr.length; i++) {
+            if (twoArr[i] == wordArr[0]) {
+                return i + 10;
+            }
+        }
+        for (i = 0; i < threeArr.length; i++) {
+            if (threeArr[i] == wordArr[0])
+                return (i + 2) * 10;
+        }
+    }
+    if (wordArr.length == 2 && wordArr[1] == 'hundred') {
+        for (i = 0; i < oneArr.length; i++) {
+            if (oneArr[i] == wordArr[0]) {
+                var res = String(i + 1) + '00';
+                return Number(res);
+            }
+        }
+    }
+    if (wordArr.length == 2 && wordArr[1] != 'hundred') {
+        var first;
+        var second;
+        for (i = 0; i < threeArr.length; i++) {
+            if (threeArr[i] == wordArr[0])
+                first = i + 2;
+        }
+        for (i = 0; i < oneArr.length; i++) {
+            if (oneArr[i] == wordArr[1])
+                second = i + 1;
+        }
+        var res = first + '' + second;
+        return Number(res);
+    }
+    if (wordArr.length == 3) {
+        var first;
+        var second;
+        for (i = 0; i < oneArr.length; i++) {
+            if (oneArr[i] == wordArr[0]) {
+                first = i + 1;
+                for (i = 0; i < oneArr.length; i++) {//101
+                    if (oneArr[i] == wordArr[2]) {
+                        second = i + 1;
+                        var res = first + '' + '0' + second;
+                        return Number(res);
+                    }
+                }
+                for (i = 0; i < twoArr.length; i++) {//111
+                    if (twoArr[i] == wordArr[2]) {
+                        second = i + 10;
+                        var res = first + '' + second;
+                        return Number(res);
+                    }
+                }
+                for (i = 0; i < threeArr.length; i++) {//120
+                    if (threeArr[i] == wordArr[2]) {
+                        second = (i + 2) * 10;
+                        var res = first + '' + second;
+                        return Number(res);
+                    }
+                }
+            }
+        }
+    }
+    if (wordArr.length == 4) {
+        var first;
+        var second;
+        var third;
+        for (i = 0; i < oneArr.length; i++) {
+            if (oneArr[i] == wordArr[0]) {
+                first = i + 1;
+            }
+        }
+        for (i = 0; i < threeArr.length; i++) {
+            if (threeArr[i] == wordArr[2]) {
+                second = (i + 2);
+            }
+        }
+        for (i = 0; i < oneArr.length; i++) {
+            if (oneArr[i] == wordArr[3]) {
+                third = i + 1;
+                var res = first + '' + second + '' + third;
+                return Number(res);
+            }
+        }
+    }
+}
 
+// 4. Найти расстояние между двумя точками в двумерном декартовом пространстве.
+function distance(xa, ya, xb, yb) {
+    var dist = Math.sqrt(Math.pow((xb - xa), 2) + Math.pow((yb - ya), 2));
+    return dist;
+}
 
 function init() {
     var array = [100, 5, 6, -7, 12, 15, 0, 3, -8, 9];
@@ -330,7 +434,8 @@ function init() {
         ' sumOfUneven numbers ', sumOfUneven(array2), ', last number of revers array = ', reversArray(array),
         ', amount of uneven =', uneven(array), ', change Halfs of array- ', changeHalfs(array), ', sort Bubble array- ',
         sortBubble(array), ', sort selection - ', sortSelection(array), 'sort insert - ', sortInsert(array),
-        ', day of week(from 0 to 6) - ', dayOfWeek(6), ', wordNumber - ', wordNumber(101));
+        ', day of week(from 0 to 6) - ', dayOfWeek(6), ', numberToWord - ', numberToWord(909),
+        ', word to number - ', wordToNumber('two hundred fifty four'), 'distance = ', distance(2, 4, 3, 6));
 
 };
 init();

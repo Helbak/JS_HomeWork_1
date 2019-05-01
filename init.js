@@ -267,6 +267,52 @@ function sortInsert(array) {
 
 // 10. Отсортировать массив (Quick, Merge, Shell, Heap)
 
+// Получить строковое название дня недели по номеру дня.
+function dayOfWeek(dayIndex) {
+    return ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"][dayIndex];
+}
+// 2. Вводим число (0-999), получаем строку с прописью числа.
+function wordNumber(a) {
+
+    var word = String(a);
+    var wordArr = word.split('');
+    var oneArr = ['one', 'twoo', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+    var twoArr = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+    var threeArr = ['twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+    var fourArr = ['one hundred', 'two hundred', 'three hundred', 'four hundred', 'five hundred', 'six hundred', 'seven hundred', 'eight hundred', 'nine hundred'];
+    if (wordArr.length == 1) {
+        return oneArr[a - 1]
+    }
+    if (wordArr.length == 2 && wordArr[0] == 1) {
+        return twoArr[wordArr[1]];
+    }
+    if (wordArr.length == 2 && wordArr[0] != 1 && wordArr[1] != 0) {
+        var res = threeArr[wordArr[0] - 2] + ' ' + oneArr[wordArr[1] - 1];
+        return res;
+    }
+    if (wordArr.length == 2 && wordArr[0] != 1 && wordArr[1] == 0) {
+        return threeArr[wordArr[0] - 2];
+    }
+    if (wordArr.length == 3 && wordArr[1] != 1&& wordArr[1] != 0  && wordArr[2] != 0) {//123
+        var res = fourArr[wordArr[0] - 1] + ' ' + threeArr[wordArr[1] - 2] + ' ' + oneArr[wordArr[2] - 1];
+        return res;
+    }
+    if (wordArr.length == 3 && wordArr[1] != 1 && wordArr[1] != 0 && wordArr[2] == 0) {//120
+        var res = fourArr[wordArr[0] - 1] + ' ' + threeArr[wordArr[1] - 2];
+        return res;
+    }
+    if (wordArr.length == 3 && wordArr[1] == 0 && wordArr[2] == 0) {//900
+        return fourArr[wordArr[0] - 1];
+    }
+    if (wordArr.length == 3 && wordArr[1] == 0 && wordArr[2] != 0) {//103
+        var res = fourArr[wordArr[0] - 1] +' '+ oneArr[wordArr[2] - 1];
+        return res;
+    }
+}
+// 3. Вводим строку, которая содержит число, написанное прописью (0-999). Получить само
+// число
+// 4. Найти расстояние между двумя точками в двумерном декартовом пространстве.
+
 
 function init() {
     var array = [100, 5, 6, -7, 12, 15, 0, 3, -8, 9];
@@ -283,7 +329,8 @@ function init() {
         ', index of min from array = ', indexOfMinFromArray(array), ', index of max from array = ', indexOfMaxFromArray(array),
         ' sumOfUneven numbers ', sumOfUneven(array2), ', last number of revers array = ', reversArray(array),
         ', amount of uneven =', uneven(array), ', change Halfs of array- ', changeHalfs(array), ', sort Bubble array- ',
-        sortBubble(array), ', sort selection - ', sortSelection(array), 'sort insert - ', sortInsert(array));
+        sortBubble(array), ', sort selection - ', sortSelection(array), 'sort insert - ', sortInsert(array),
+        ', day of week(from 0 to 6) - ', dayOfWeek(6), ', wordNumber - ', wordNumber(101));
 
 };
 init();
